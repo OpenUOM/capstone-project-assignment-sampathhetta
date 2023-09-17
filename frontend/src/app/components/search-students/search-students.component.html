@@ -1,1 +1,4 @@
-<app-navbar title="Search Student"></app-navbar>
+<div class=" search-container">
+    <span>Search:</span>
+    <input type="text" [(ngModel)]="enteredSearchValue"(input)="onSearchTextChanged()">
+</div>

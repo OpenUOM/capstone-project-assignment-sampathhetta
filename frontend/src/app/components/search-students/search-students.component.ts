@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,EventEmitter,Output } from '@angular/core';
 import {AppServiceService} from '../../app-service.service';
 import { Router, NavigationExtras } from '@angular/router';
 
@@ -9,36 +9,20 @@ import { Router, NavigationExtras } from '@angular/router';
 })
 export class SearchStudentsComponent implements OnInit {
 
-  studentData: any;
+  constructor() {}
 
+  ngOnInit(): void{
 
-  constructor(private service : AppServiceService, private router: Router) { }
-
-  navigation = this.router.getCurrentNavigation();
-
-  ngOnInit(): void {
-    this.getStudentData();
   }
 
-  getStudentData(){
-    let student = {
-      id : this.navigation.extras.state.id
-    }
-    this.service.getOneStudentData(student).subscribe((response)=>{
-      this.studentData = response[0];
-    },(error)=>{
-      console.log('ERROR - ', error)
-    })
-  }
+  enteredSearchValue: string = '';
 
-  searchStudent(values){
-    values.id = this.navigation.extras.state.id;
-    this.service.editStudent(values).subscribe((response)=>{
-      this.studentData = response[0];
-    },(error)=>{
-      console.log('ERROR - ', error)
-    })
+  @Output()
+  searchTextChanged: EventEmitter<string>= new EventEmitter<string>();
+
+  onSearchTexChanged(){
+    this.searchTextChanged.emit(this.enteredSearchValue);
   }
 
 }
-
+  

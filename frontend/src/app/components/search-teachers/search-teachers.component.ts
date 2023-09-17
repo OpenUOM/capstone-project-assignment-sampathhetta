@@ -1,6 +1,7 @@
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,EventEmitter, Output } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
+
 import {AppServiceService} from '../../app-service.service';
 
 @Component({
@@ -10,35 +11,20 @@ import {AppServiceService} from '../../app-service.service';
 })
 export class SearchTeachersComponent implements OnInit {
 
-  TearcherData: any;
+  constructor() {}
 
+  ngOnInit(): void{
 
-  constructor(private service : AppServiceService, private router: Router) { }
-
-  navigation = this.router.getCurrentNavigation();
-
-  ngOnInit(): void {
-    this.getTeacherData();
   }
 
-  getTeacherData(){
-    let teacher = {
-      id : this.navigation.extras.state.id
-    }
-    this.service.getOneTeacherData(teacher).subscribe((response)=>{
-      this.searchTeacher = response[0];
-    },(error)=>{
-      console.log('ERROR - ', error)
-    })
-  }
+  enteredSearchValue: string = '';
 
-  searchTeacher(values){
-    values.id = this.navigation.extras.state.id;
-    this.service.editTeacher(values).subscribe((response)=>{
-      this.TearcherData = response[0];
-    },(error)=>{
-      console.log('ERROR - ', error)
-    })
+  @Output()
+  searchTextChanged: EventEmitter<string>= new EventEmitter<string>();
+
+  onSearchTexChanged(){
+    this.searchTextChanged.emit(this.enteredSearchValue);
   }
 
 }
+  
