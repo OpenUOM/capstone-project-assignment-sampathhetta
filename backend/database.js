@@ -120,11 +120,11 @@ const readStudentInfo = async (id) => {
     });
 }
 
-const addStudent = async (id, name, age) => {
-    const sql = `INSERT INTO student(id,name,age) values (?, ?, ?)`
+const addStudent = async (age,hometown,id,name) => {
+    const sql = `INSERT INTO student(age,hometown,id,name) values (?, ?, ?,?)`
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql, [id, name, age])
+            .raw(sql, [age,hometown,id,name])
             .then(() => {
                 resolve({status: "Successfully inserted Student"})
             })
@@ -134,11 +134,11 @@ const addStudent = async (id, name, age) => {
     });
 }
 
-const updateStudent = async (name, age, id) => {
-    const sql = `UPDATE student SET name=?, age=? WHERE id=?`
+const updateStudent = async (age,hometown,id,name) => {
+    const sql = `UPDATE student SET name=?, age=? WHERE id=?,hometown=?`
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql, [name, age, id])
+            .raw(sql, [age,hometown,id,name])
             .then(() => {
                 resolve({status: "Successfully updated Student"})
             })
