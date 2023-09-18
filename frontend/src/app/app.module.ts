@@ -13,8 +13,7 @@ import { AddNewTeacherComponent } from './components/add-new-teacher/add-new-tea
 import { AddNewStudentComponent } from './components/add-new-student/add-new-student.component';
 import { EditStudentComponent } from './components/edit-student/edit-student.component';
 import { EditTeacherComponent } from './components/edit-teacher/edit-teacher.component';
-import { SearchStudentsComponent } from './components/search-students/search-students.component';
-import { SearchTeachersComponent } from './components/search-teachers/search-teachers.component';
+
 
 
 @NgModule({
@@ -27,8 +26,7 @@ import { SearchTeachersComponent } from './components/search-teachers/search-tea
     AddNewStudentComponent,
     EditStudentComponent,
     EditTeacherComponent,
-    SearchStudentsComponent,
-    SearchTeachersComponent
+   
   ],
   imports: [
     BrowserModule,
