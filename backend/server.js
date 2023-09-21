@@ -11,8 +11,7 @@ const {
   readTeacherInfo,
   updateStudent,
   updateTeacher,
-  searchTeachers,
-  searchStudents,
+  
   dbinitialize
 } = require ("./database.js");
 

@@ -25,7 +25,7 @@ export class TeacherTableComponent implements OnInit {
     this.router.navigate(['addTeacher'])
   }
 
-  editTeacher(id) {
+  editTeacher(id: any) {
     const navigationExtras: NavigationExtras = {
       state: {
         id: id
@@ -64,13 +64,13 @@ export class TeacherTableComponent implements OnInit {
     if (value.length <= 0) {
       this.getTeacherData();
     } else {
-      this.teacherData = this.teacherData.filter((teacher) =>
+      this.teacherData = this.teacherData.filter((teacher: { name: string; }) =>
         teacher.name.toLowerCase().includes(value.toLowerCase())
       );
     }
   }
 
-  deleteTeacher(itemid) {
+  deleteTeacher(itemid: any) {
     const test = {
       id: itemid
     }
