@@ -60,7 +60,7 @@ export class TeacherTableComponent implements OnInit {
     })
   }
 
-  search(value: string) {
+  search(value) {
     if (value.length <= 0) {
       this.getTeacherData();
     } else {
